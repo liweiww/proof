@@ -140,6 +140,7 @@ func get(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		// 添加 CORS 头
 		headers := w.Header()
+
 		headers.Set("Access-Control-Allow-Origin", "*")
 		headers.Set("Access-Control-Allow-Methods", "POST, OPTIONS")
 		headers.Set("Access-Control-Allow-Headers", "Content-Type")
