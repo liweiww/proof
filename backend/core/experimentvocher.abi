@@ -1,0 +1,157 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_dataName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_identificationCode",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_author",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_projectName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_dataVolume",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_version",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_dataTraceability",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_creationOrganization",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_dataFileHash",
+				"type": "string"
+			}
+		],
+		"name": "createExperimentVoucher",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "experimentId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "transactionHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "ExperimentCreated",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "experimentId",
+				"type": "bytes32"
+			}
+		],
+		"name": "getExperiment",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "dataName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "identificationCode",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "author",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "projectName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "dataVolume",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "version",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "dataTraceability",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "creationOrganization",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "dataFileHash",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lastExperimentId",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
