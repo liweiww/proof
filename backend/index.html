@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Example</title>
+  </head>
+  <body>
+    <form>
+      <label>
+        数据名称:
+        <input type="text" name="data_name" />
+      </label>
+      <br />
+      <label>
+        标识代码:
+        <input type="text" name="identifier" />
+      </label>
+      <br />
+      <label>
+        实验人:
+        <input type="text" name="author" />
+      </label>
+      <br />
+      <label>
+        项目名称:
+        <input type="text" name="project_name" />
+      </label>
+      <br />
+      <label>
+        数据量:
+        <input type="text" name="data_size" />
+      </label>
+      <br />
+      <label>
+        版本:
+        <input type="text" name="version" />
+      </label>
+      <br />
+      <label>
+        下载地址:
+        <input type="text" name="download_url" />
+      </label>
+      <br />
+      <label>
+        实验日期:
+        <input type="text" name="data_source" />
+      </label>
+      <br />
+      <label>
+        创建机构:
+        <input type="text" name="creation_organization" />
+      </label>
+      <br />
+      <label>
+        上传文件:
+        <input type="file" name="file" />
+      </label>
+      <br />
+      <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+    <div id="result" style="height: 50px"></div>
+    <form>
+      <br />
+      <label>
+        存证id:
+        <input type="text" name="experiment_id" />
+      </label>
+      <br />
+      <button type="button" onclick="getExperiment()">Submit</button>
+    </form>
+    <div id="result2"></div>
+    <script>
+      function submitForm() {
+        const data = {
+          data_name: document.querySelector('[name="data_name"]').value,
+          identifier: document.querySelector('[name="identifier"]').value,
+          author: document.querySelector('[name="author"]').value,
+          project_name: document.querySelector('[name="project_name"]').value,
+          data_size: document.querySelector('[name="data_size"]').value,
+          version: document.querySelector('[name="version"]').value,
+          download_url: document.querySelector('[name="download_url"]').value,
+          data_source: document.querySelector('[name="data_source"]').value,
+          creation_organization: document.querySelector('[name="creation_organization"]').value,
+        };
+        const file = document.querySelector('[name="file"]').files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('data', JSON.stringify(data));
+        fetch('http://localhost:8080/api/user', {
+          method: 'POST',
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // 渲染数据到页面上
+            const resultEl = document.getElementById('result');
+            const message = data.message;
+            resultEl.innerHTML = `<p>${message}</p>`;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+      function getExperiment(){
+        const data = {
+          experiment_id: document.querySelector('[name="experiment_id"]').value,
+        };
+        const formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+        fetch('http://localhost:8080/api/get', {
+          method: 'POST',
+          body: formData,
+        })
+                .then((response) => response.json())
+                .then((data) => {
+                  // 渲染数据到页面上
+                  const resultEl = document.getElementById('result2');
+                  const message = data.message;
+                  resultEl.innerHTML = `<p>${message}</p>`;
+                })
+                .catch((error) => {
+                  console.error(error);
+                });
+      }
+    </script>
+  </body>
+</html>
